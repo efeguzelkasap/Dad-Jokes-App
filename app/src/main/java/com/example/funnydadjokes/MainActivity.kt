@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         setContentView(R.layout.activity_main)
         val jokeBtn = findViewById<Button>(R.id.jokeButton)
 
-        jokeBtn.setOnClickListener(this);
+        jokeBtn.setOnClickListener(this)
 
         generateJoke()
 
@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     }
 
-    fun generateJoke()
+    private fun generateJoke()
     {
-        val joke = findViewById(R.id.jokeTextView) as TextView
+        val joke = findViewById<TextView>(R.id.jokeTextView)
         val delivery = findViewById<TextView>(R.id.deliveryTextView)
 
         val repository = Repository()
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 joke.text = response.errorBody().toString()
             }
 
-            joke.text = response.body()?.setup;
+            joke.text = response.body()?.setup
             delivery.text = response.body()?.delivery
 
         })
